@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: blanchedalmond;
+    background-color: #ffebcd;
     min-height: 100vh;
     padding: 20px;
     text-align: center;
@@ -21,7 +21,7 @@ p{
 }
 
 #anime{
-    background-color: rgb(236, 214, 205);
+    background-color: #ecd6cd;
     width: 300px;
     margin: 0 auto;
     padding: 50px;
@@ -66,4 +66,5 @@ img {
 
 .shenlong{
     border-radius: 45%;
+    margin: auto;
 }

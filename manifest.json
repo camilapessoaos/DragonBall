@@ -1,0 +1,9 @@
+{
+  "name": "https://esferadodragao.netlify.app/",
+  "short_name": "Esfera do Dragão",
+  "theme_color": "#ecd6cd",
+  "background_color": "#ffebcd",
+  "display": "browser",
+  "scope": "/",
+  "start_url": "/"
+}
