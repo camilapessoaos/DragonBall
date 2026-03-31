@@ -4,16 +4,16 @@
   "theme_color": "#ecd6cd",
   "background_color": "#ffebcd",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "/DRAGONBALL/",
+  "start_url": "/DRAGONBALL/",
   "icons": [
       {
-        "src": "DRAGONBALL/icons/ic_launcher.png",
+        "src": "/icons/ic_launcher.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "DRAGONBALL/icons/bola512.png",
+        "src": "/icons/bola512.png",
         "sizes": "512x512",
         "type": "image/png"
       }
