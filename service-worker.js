@@ -1,12 +1,12 @@
-const NOME_DO_CACHE = 'pwa-cache-v1';
-const ARQUIVOS_PARA_CACHEAR = [
-    '/',
-    '/index.html',
-    '/script.js',
-    '/style.css', // Adicione o CSS também!
-    '/manifest.json',
-    '/icons/ic_launcher.png',
-    '/icons/bola512.png'
+const CACHE_NAME = 'dragonball-cache-v1';
+const assets = [
+  './',
+  './index.html',
+  './style.css',
+  './script.js',
+  './manifest.json',
+  './icons/ic_launcher.png',
+  './icons/bola512.png'
 ];
 
 // Evento de INSTALAÇÃO: Aqui nós salvamos os arquivos básicos na memória (Cache)
