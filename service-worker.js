@@ -1,47 +1,35 @@
-// This is the "Offline page" service worker
+const NOME_DO_CACHE = 'pwa-cache-v1';
+const ARQUIVOS_PARA_CACHEAR = [
+    '/',
+    '/index.html',
+    '/script.js',
+    '/manifest.json'
+];
 
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
-
-const CACHE = "pwabuilder-page";
-
-// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
-const offlineFallbackPage = "index.html";
-
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
+// Evento de INSTALAÇÃO: Aqui nós salvamos os arquivos básicos na memória (Cache)
+self.addEventListener('install', (evento) => {
+    evento.waitUntil(
+        caches.open(NOME_DO_CACHE)
+            .then((cache) => {
+                console.log('Arquivos em cache salvos com sucesso!');
+                return cache.addAll(ARQUIVOS_PARA_CACHEAR);
+            })
+    );
 });
 
-self.addEventListener('install', async (event) => {
-  event.waitUntil(
-    caches.open(CACHE)
-      .then((cache) => cache.add(offlineFallbackPage))
-  );
+// Evento de FETCH: Ocorre toda vez que o app tenta carregar algo (uma imagem, uma página)
+self.addEventListener('fetch', (evento) => {
+    evento.respondWith(
+        // Verifica se o que foi pedido já existe na nossa memória Cache
+        caches.match(evento.request)
+            .then((resposta) => {
+                // Se estiver no cache, retorna a cópia salva (funciona offline!)
+                if (resposta) {
+                    return resposta;
+                }
+                // Se não estiver, busca na internet normalmente
+                return fetch(evento.request);
+            })
+    );
 });
 
-if (workbox.navigationPreload.isSupported()) {
-  workbox.navigationPreload.enable();
-}
-
-self.addEventListener('fetch', (event) => {
-  if (event.request.mode === 'navigate') {
-    event.respondWith((async () => {
-      try {
-        const preloadResp = await event.preloadResponse;
-
-        if (preloadResp) {
-          return preloadResp;
-        }
-
-        const networkResp = await fetch(event.request);
-        return networkResp;
-      } catch (error) {
-
-        const cache = await caches.open(CACHE);
-        const cachedResp = await cache.match(offlineFallbackPage);
-        return cachedResp;
-      }
-    })());
-  }
-});

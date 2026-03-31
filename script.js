@@ -34,3 +34,17 @@ function shareContent(){
     navigator.share(data);
   }
 } 
+
+// Primeiro, verificamos se o navegador suporta Service Workers
+if ('serviceWorker' in navigator) {
+    // Quando a página carregar, tentamos registrar o script
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registro => {
+                console.log('Sucesso! Service Worker registrado com escopo: ', registro.scope);
+            })
+            .catch(erro => {
+                console.log('Ops! Falha ao registrar o Service Worker: ', erro);
+            });
+    });
+}
