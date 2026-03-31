@@ -8,12 +8,12 @@
   "start_url": "/DRAGONBALL/",
   "icons": [
       {
-        "src": "/icons/ic_launcher.png",
+        "src": "DRAGONBALL/icons/ic_launcher.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "/icons/bola512.png",
+        "src": "DRAGONBALL/icons/bola512.png",
         "sizes": "512x512",
         "type": "image/png"
       }
