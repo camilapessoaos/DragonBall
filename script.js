@@ -39,7 +39,7 @@ function shareContent(){
 if ('serviceWorker' in navigator) {
     // Quando a página carregar, tentamos registrar o script
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+        navigator.serviceWorker.register('/service-worker.js')
             .then(registro => {
                 console.log('Sucesso! Service Worker registrado com escopo: ', registro.scope);
             })

@@ -3,7 +3,10 @@ const ARQUIVOS_PARA_CACHEAR = [
     '/',
     '/index.html',
     '/script.js',
-    '/manifest.json'
+    '/style.css', // Adicione o CSS também!
+    '/manifest.json',
+    '/DRAGONBALL/icons/ic_launcher.png',
+    '/DRAGONBALL/icons/bola512.png'
 ];
 
 // Evento de INSTALAÇÃO: Aqui nós salvamos os arquivos básicos na memória (Cache)
